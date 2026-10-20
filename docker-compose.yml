@@ -1,0 +1,16 @@
+services:
+  gp-reporting:
+    build: .
+    container_name: gp_reporting
+    restart: unless-stopped
+    env_file: .env
+    volumes:
+      - ./output:/app/output
+      - ./logs:/app/logs
+    # Opcional: red compartida con las BDs si corren en Docker
+    # networks:
+    #   - db_network
+
+# networks:
+#   db_network:
+#     external: true
