@@ -1,0 +1,220 @@
+2026-10-21 08:18:00 [INFO    ] queries.reporte_diario_premios — Reporte diario premios: 3 filas.
+2026-10-21 10:47:03 [INFO    ] queries.ganadores — Ganadores: 154 registros de detalle, 6 campañas con datos.
+2026-10-21 10:47:04 [WARNING ] __main__ — Validación fallida — totalPrizes vs registros (informativo): Suma totalPrizes=153, registros=154; registros con totalPrizes nulo o <= 0: 1
+2026-10-21 10:49:27 [INFO    ] queries.ganadores — Ganadores: 154 registros de detalle, 6 campañas con datos.
+2026-10-21 10:49:27 [WARNING ] __main__ — Validación fallida — totalPrizes vs registros (informativo): Suma totalPrizes=153, registros=154; registros con totalPrizes nulo o <= 0: 1
+2026-10-21 10:51:17 [INFO    ] queries.reporte_diario_premios — Reporte diario premios: 3 filas.
+2026-10-21 11:43:49 [INFO    ] __main__ — Reporte de cliente: ejecución=2026-10-21T11:43:49.691932-06:00; corte=2026-10-20 (inclusive); zona horaria=America/Guatemala.
+2026-10-21 11:43:51 [INFO    ] queries.ganadores — Ganadores: 140 registros de detalle, 6 campañas con datos.
+2026-10-21 11:43:51 [INFO    ] __main__ — Inicio configurado por campaña (America/Guatemala): 818=19/10/2026 00:00:00, 819=19/10/2026 00:00:00, 820=19/10/2026 00:00:00, 825=19/10/2026 00:00:00, 826=19/10/2026 00:00:00, 828=19/10/2026 00:00:00, 829=19/10/2026 00:00:00.
+2026-10-21 11:43:52 [INFO    ] __main__ — Reporte hasta el corte: ganadores=140; premios=139.
+2026-10-21 11:43:52 [WARNING ] __main__ — Validación con observaciones — totalPrizes vs registros (informativo).
+2026-10-21 11:44:09 [INFO    ] export_ganadores — Telegram: Excel enviado (message_id=49).
+2026-10-21 14:17:52 [INFO    ] queries.reporte_diario_premios — Reporte diario premios: 3 filas.
+2026-10-21 15:05:12 [ERROR   ] __main__ — No se pudo generar el reporte: Execution failed on sql '
+WITH campanias(campaign_id, pais) AS (
+    VALUES
+        (818, 'Guatemala'),
+        (819, 'Guatemala'),
+        (820, 'Guatemala'),
+        (825, 'El Salvador'),
+        (826, 'El Salvador'),
+        (828, 'Honduras'),
+        (829, 'Honduras')
+),
+corte AS (
+    SELECT
+        NOW() AS fecha_hora_corte,
+        (NOW() AT TIME ZONE 'America/Guatemala')::date
+            AS fecha_hoy,
+        (NOW() AT TIME ZONE 'America/Guatemala')::time
+            AS hora_corte
+),
+horarios AS (
+    SELECT
+        c.id AS campaign_id,
+        (slot ->> 'dateFrom')::date AS fecha_programada,
+        (slot ->> 'timeFrom')::time AS hora_habilitacion,
+        COALESCE(NULLIF(slot ->> 'qty', '')::int, 0)
+            AS cantidad_premios
+    FROM campaigns c
+    JOIN campanias ca
+        ON ca.campaign_id = c.id
+    CROSS JOIN LATERAL
+        jsonb_array_elements(c.push_data::jsonb) config
+    CROSS JOIN LATERAL
+        jsonb_array_elements(config -> 'gpCoupons') cupon
+    CROSS JOIN LATERAL
+        jsonb_array_elements(
+            cupon -> 'storeConfig' -> 'stores'
+        ) tienda
+    CROSS JOIN LATERAL
+        jsonb_array_elements(tienda -> 'slots') slot
+    WHERE cupon ->> 'isWinner' = 'true'
+),
+programacion AS (
+    SELECT
+        h.campaign_id,
+        SUM(h.cantidad_premios)
+            AS premios_a_entregar_hoy,
+        COALESCE(
+            SUM(h.cantidad_premios) FILTER (
+                WHERE h.hora_habilitacion <= ct.hora_corte
+            ),
+            0
+        ) AS premios_habilitados_corte
+    FROM horarios h
+    CROSS JOIN corte ct
+    WHERE h.fecha_programada = ct.fecha_hoy
+    GROUP BY h.campaign_id
+),
+ganadores AS (
+    SELECT
+        cpw."campaignId" AS campaign_id,
+        COUNT(*) AS premios_entregados_hoy
+    FROM "CustomerPrizeWins" cpw
+    CROSS JOIN corte ct
+    WHERE cpw."campaignId" IN (
+        818, 819, 820,
+        825, 826,
+        828, 829
+    )
+      AND (cpw."createdAt" AT TIME ZONE 'America/Guatemala')::date = ct.fecha_hoy
+      AND cpw."createdAt" <= ct.fecha_hora_corte
+    GROUP BY cpw."campaignId"
+)
+SELECT
+    ca.pais AS pais,
+    ct.fecha_hoy AS fecha,
+    TO_CHAR(ct.hora_corte, 'HH12:MI AM') AS hora_corte,
+
+    SUM(COALESCE(pr.premios_a_entregar_hoy, 0))
+        AS premios_a_entregar_total,
+
+    SUM(COALESCE(pr.premios_habilitados_corte, 0))
+        AS premios_a_entregar_corte,
+
+    SUM(COALESCE(g.premios_entregados_hoy, 0))
+        AS premios_entregados_hoy
+
+FROM campanias ca
+CROSS JOIN corte ct
+LEFT JOIN programacion pr
+    ON pr.campaign_id = ca.campaign_id
+LEFT JOIN ganadores g
+    ON g.campaign_id = ca.campaign_id
+
+GROUP BY ca.pais, ct.fecha_hoy, ct.hora_corte
+
+ORDER BY CASE ca.pais
+    WHEN 'Guatemala' THEN 1
+    WHEN 'El Salvador' THEN 2
+    WHEN 'Honduras' THEN 3
+END;
+': cannot extract elements from a scalar
+
+2026-10-21 15:05:30 [ERROR   ] __main__ — No se pudo generar el reporte: Execution failed on sql '
+WITH campanias(campaign_id, pais) AS (
+    VALUES
+        (818, 'Guatemala'),
+        (819, 'Guatemala'),
+        (820, 'Guatemala'),
+        (825, 'El Salvador'),
+        (826, 'El Salvador'),
+        (828, 'Honduras'),
+        (829, 'Honduras')
+),
+corte AS (
+    SELECT
+        NOW() AS fecha_hora_corte,
+        (NOW() AT TIME ZONE 'America/Guatemala')::date
+            AS fecha_hoy,
+        (NOW() AT TIME ZONE 'America/Guatemala')::time
+            AS hora_corte
+),
+horarios AS (
+    SELECT
+        c.id AS campaign_id,
+        (slot ->> 'dateFrom')::date AS fecha_programada,
+        (slot ->> 'timeFrom')::time AS hora_habilitacion,
+        COALESCE(NULLIF(slot ->> 'qty', '')::int, 0)
+            AS cantidad_premios
+    FROM campaigns c
+    JOIN campanias ca
+        ON ca.campaign_id = c.id
+    CROSS JOIN LATERAL
+        jsonb_array_elements(c.push_data::jsonb) config
+    CROSS JOIN LATERAL
+        jsonb_array_elements(config -> 'gpCoupons') cupon
+    CROSS JOIN LATERAL
+        jsonb_array_elements(
+            cupon -> 'storeConfig' -> 'stores'
+        ) tienda
+    CROSS JOIN LATERAL
+        jsonb_array_elements(tienda -> 'slots') slot
+    WHERE cupon ->> 'isWinner' = 'true'
+),
+programacion AS (
+    SELECT
+        h.campaign_id,
+        SUM(h.cantidad_premios)
+            AS premios_a_entregar_hoy,
+        COALESCE(
+            SUM(h.cantidad_premios) FILTER (
+                WHERE h.hora_habilitacion <= ct.hora_corte
+            ),
+            0
+        ) AS premios_habilitados_corte
+    FROM horarios h
+    CROSS JOIN corte ct
+    WHERE h.fecha_programada = ct.fecha_hoy
+    GROUP BY h.campaign_id
+),
+ganadores AS (
+    SELECT
+        cpw."campaignId" AS campaign_id,
+        COUNT(*) AS premios_entregados_hoy
+    FROM "CustomerPrizeWins" cpw
+    CROSS JOIN corte ct
+    WHERE cpw."campaignId" IN (
+        818, 819, 820,
+        825, 826,
+        828, 829
+    )
+      AND (cpw."createdAt" AT TIME ZONE 'America/Guatemala')::date = ct.fecha_hoy
+      AND cpw."createdAt" <= ct.fecha_hora_corte
+    GROUP BY cpw."campaignId"
+)
+SELECT
+    ca.pais AS pais,
+    ct.fecha_hoy AS fecha,
+    TO_CHAR(ct.hora_corte, 'HH12:MI AM') AS hora_corte,
+
+    SUM(COALESCE(pr.premios_a_entregar_hoy, 0))
+        AS premios_a_entregar_total,
+
+    SUM(COALESCE(pr.premios_habilitados_corte, 0))
+        AS premios_a_entregar_corte,
+
+    SUM(COALESCE(g.premios_entregados_hoy, 0))
+        AS premios_entregados_hoy
+
+FROM campanias ca
+CROSS JOIN corte ct
+LEFT JOIN programacion pr
+    ON pr.campaign_id = ca.campaign_id
+LEFT JOIN ganadores g
+    ON g.campaign_id = ca.campaign_id
+
+GROUP BY ca.pais, ct.fecha_hoy, ct.hora_corte
+
+ORDER BY CASE ca.pais
+    WHEN 'Guatemala' THEN 1
+    WHEN 'El Salvador' THEN 2
+    WHEN 'Honduras' THEN 3
+END;
+': cannot extract elements from a scalar
+
+2026-10-21 15:38:51 [INFO    ] queries.reporte_diario_premios — Reporte diario premios: 3 filas.
+2026-10-21 16:03:39 [INFO    ] queries.reporte_diario_premios — Reporte diario premios: 3 filas.
+2026-10-21 18:59:13 [INFO    ] queries.reporte_diario_premios — Reporte diario premios: 3 filas.

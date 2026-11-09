@@ -1,0 +1,288 @@
+2026-06-22 16:49:03 [INFO    ] __main__ — ============================================================
+2026-06-22 16:49:03 [INFO    ] __main__ — Iniciando Pulse Reports — 2026-06-22 16:49:03
+2026-06-22 16:49:03 [INFO    ] __main__ — Secciones activas: ['config_gp', 'historico', 'premios_hoy', 'reclamos', 'trivias']
+2026-06-22 16:49:03 [INFO    ] __main__ — ============================================================
+2026-06-22 16:49:03 [INFO    ] __main__ — Ejecutando queries Honduras…
+2026-06-22 16:49:07 [WARNING ] utils.db — Intento 1/3 fallido (grupouno_prd): connection to server at "localhost" (::1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-06-22 16:49:13 [WARNING ] utils.db — Intento 2/3 fallido (grupouno_prd): connection to server at "localhost" (::1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-06-22 16:49:21 [WARNING ] utils.db — Intento 3/3 fallido (grupouno_prd): connection to server at "localhost" (::1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-06-22 16:49:21 [ERROR   ] utils.db — Error ejecutando query en 'grupouno_prd': No se pudo conectar a 'grupouno_prd' tras 3 intentos
+2026-06-22 16:49:25 [WARNING ] utils.db — Intento 1/3 fallido (grupouno_prd): connection to server at "localhost" (::1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-06-22 16:49:31 [WARNING ] utils.db — Intento 2/3 fallido (grupouno_prd): connection to server at "localhost" (::1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-06-22 16:49:39 [WARNING ] utils.db — Intento 3/3 fallido (grupouno_prd): connection to server at "localhost" (::1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-06-22 16:49:39 [ERROR   ] utils.db — Error ejecutando query en 'grupouno_prd': No se pudo conectar a 'grupouno_prd' tras 3 intentos
+2026-06-22 16:49:43 [WARNING ] utils.db — Intento 1/3 fallido (grupouno_prd): connection to server at "localhost" (::1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-06-22 16:49:50 [WARNING ] utils.db — Intento 2/3 fallido (grupouno_prd): connection to server at "localhost" (::1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-06-22 16:49:58 [WARNING ] utils.db — Intento 3/3 fallido (grupouno_prd): connection to server at "localhost" (::1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-06-22 16:49:58 [ERROR   ] utils.db — Error ejecutando query en 'grupouno_prd': No se pudo conectar a 'grupouno_prd' tras 3 intentos
+2026-06-22 16:50:02 [WARNING ] utils.db — Intento 1/3 fallido (grupouno_prd): connection to server at "localhost" (::1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-06-22 16:50:08 [WARNING ] utils.db — Intento 2/3 fallido (grupouno_prd): connection to server at "localhost" (::1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-06-22 16:50:16 [WARNING ] utils.db — Intento 3/3 fallido (grupouno_prd): connection to server at "localhost" (::1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-06-22 16:50:16 [ERROR   ] utils.db — Error ejecutando query en 'grupouno_prd': No se pudo conectar a 'grupouno_prd' tras 3 intentos
+2026-06-22 16:50:20 [WARNING ] utils.db — Intento 1/3 fallido (grupouno_prd): connection to server at "localhost" (::1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-06-22 16:50:26 [WARNING ] utils.db — Intento 2/3 fallido (grupouno_prd): connection to server at "localhost" (::1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-06-22 16:50:34 [WARNING ] utils.db — Intento 3/3 fallido (grupouno_prd): connection to server at "localhost" (::1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-06-22 16:50:34 [ERROR   ] utils.db — Error ejecutando query en 'grupouno_prd': No se pudo conectar a 'grupouno_prd' tras 3 intentos
+2026-06-22 16:50:38 [WARNING ] utils.db — Intento 1/3 fallido (grupouno_prd): connection to server at "localhost" (::1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-06-22 16:50:44 [WARNING ] utils.db — Intento 2/3 fallido (grupouno_prd): connection to server at "localhost" (::1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-06-22 16:50:53 [WARNING ] utils.db — Intento 3/3 fallido (grupouno_prd): connection to server at "localhost" (::1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-06-22 16:50:53 [ERROR   ] utils.db — Error ejecutando query en 'grupouno_prd': No se pudo conectar a 'grupouno_prd' tras 3 intentos
+2026-06-22 16:50:57 [WARNING ] utils.db — Intento 1/3 fallido (grupouno_prd): connection to server at "localhost" (::1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-06-22 16:51:03 [WARNING ] utils.db — Intento 2/3 fallido (grupouno_prd): connection to server at "localhost" (::1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-06-22 16:51:11 [WARNING ] utils.db — Intento 3/3 fallido (grupouno_prd): connection to server at "localhost" (::1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-06-22 16:51:11 [ERROR   ] queries.premios — get_reclamos [grupouno_prd]: No se pudo conectar a 'grupouno_prd' tras 3 intentos
+Traceback (most recent call last):
+  File "C:\Users\Felipe\Documents\pulse-reports\utils\db.py", line 34, in get_connection
+    conn = psycopg2.connect(db_cfg.dsn())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Felipe\Documents\pulse-reports\.venv\Lib\site-packages\psycopg2\__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: connection to server at "localhost" (::1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Felipe\Documents\pulse-reports\queries\premios.py", line 115, in get_reclamos
+    with get_connection(db) as conn:
+  File "C:\Users\Felipe\AppData\Local\Programs\Python\Python312\Lib\contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "C:\Users\Felipe\Documents\pulse-reports\utils\db.py", line 43, in get_connection
+    raise DatabaseError(
+utils.db.DatabaseError: No se pudo conectar a 'grupouno_prd' tras 3 intentos
+2026-06-22 16:51:11 [INFO    ] __main__ — Ejecutando queries El Salvador…
+2026-06-22 16:51:15 [WARNING ] utils.db — Intento 1/3 fallido (grupouno_prd): connection to server at "localhost" (::1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-06-22 16:51:21 [WARNING ] utils.db — Intento 2/3 fallido (grupouno_prd): connection to server at "localhost" (::1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-06-22 16:51:29 [WARNING ] utils.db — Intento 3/3 fallido (grupouno_prd): connection to server at "localhost" (::1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-06-22 16:51:29 [ERROR   ] utils.db — Error ejecutando query en 'grupouno_prd': No se pudo conectar a 'grupouno_prd' tras 3 intentos
+2026-06-22 16:51:33 [WARNING ] utils.db — Intento 1/3 fallido (grupouno_prd): connection to server at "localhost" (::1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-06-22 16:51:39 [WARNING ] utils.db — Intento 2/3 fallido (grupouno_prd): connection to server at "localhost" (::1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-06-22 16:51:47 [WARNING ] utils.db — Intento 3/3 fallido (grupouno_prd): connection to server at "localhost" (::1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-06-22 16:51:47 [ERROR   ] utils.db — Error ejecutando query en 'grupouno_prd': No se pudo conectar a 'grupouno_prd' tras 3 intentos
+2026-06-22 16:51:52 [WARNING ] utils.db — Intento 1/3 fallido (grupouno_prd): connection to server at "localhost" (::1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-06-22 16:51:58 [WARNING ] utils.db — Intento 2/3 fallido (grupouno_prd): connection to server at "localhost" (::1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-06-22 16:52:06 [WARNING ] utils.db — Intento 3/3 fallido (grupouno_prd): connection to server at "localhost" (::1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-06-22 16:52:06 [ERROR   ] utils.db — Error ejecutando query en 'grupouno_prd': No se pudo conectar a 'grupouno_prd' tras 3 intentos
+2026-06-22 16:52:10 [WARNING ] utils.db — Intento 1/3 fallido (grupouno_prd): connection to server at "localhost" (::1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-06-22 16:52:16 [WARNING ] utils.db — Intento 2/3 fallido (grupouno_prd): connection to server at "localhost" (::1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-06-22 16:52:24 [WARNING ] utils.db — Intento 3/3 fallido (grupouno_prd): connection to server at "localhost" (::1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-06-22 16:52:24 [ERROR   ] utils.db — Error ejecutando query en 'grupouno_prd': No se pudo conectar a 'grupouno_prd' tras 3 intentos
+2026-06-22 16:52:28 [WARNING ] utils.db — Intento 1/3 fallido (grupouno_prd): connection to server at "localhost" (::1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-06-22 16:52:34 [WARNING ] utils.db — Intento 2/3 fallido (grupouno_prd): connection to server at "localhost" (::1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-06-22 16:52:42 [WARNING ] utils.db — Intento 3/3 fallido (grupouno_prd): connection to server at "localhost" (::1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-06-22 16:52:42 [ERROR   ] utils.db — Error ejecutando query en 'grupouno_prd': No se pudo conectar a 'grupouno_prd' tras 3 intentos
+2026-06-22 16:52:46 [WARNING ] utils.db — Intento 1/3 fallido (grupouno_prd): connection to server at "localhost" (::1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-06-22 16:52:52 [WARNING ] utils.db — Intento 2/3 fallido (grupouno_prd): connection to server at "localhost" (::1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-06-22 16:53:01 [WARNING ] utils.db — Intento 3/3 fallido (grupouno_prd): connection to server at "localhost" (::1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-06-22 16:53:01 [ERROR   ] utils.db — Error ejecutando query en 'grupouno_prd': No se pudo conectar a 'grupouno_prd' tras 3 intentos
+2026-06-22 16:53:05 [WARNING ] utils.db — Intento 1/3 fallido (grupouno_prd): connection to server at "localhost" (::1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-06-22 16:53:11 [WARNING ] utils.db — Intento 2/3 fallido (grupouno_prd): connection to server at "localhost" (::1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-06-22 16:53:19 [WARNING ] utils.db — Intento 3/3 fallido (grupouno_prd): connection to server at "localhost" (::1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-06-22 16:53:19 [ERROR   ] queries.premios — get_reclamos [grupouno_prd]: No se pudo conectar a 'grupouno_prd' tras 3 intentos
+Traceback (most recent call last):
+  File "C:\Users\Felipe\Documents\pulse-reports\utils\db.py", line 34, in get_connection
+    conn = psycopg2.connect(db_cfg.dsn())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Felipe\Documents\pulse-reports\.venv\Lib\site-packages\psycopg2\__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: connection to server at "localhost" (::1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Felipe\Documents\pulse-reports\queries\premios.py", line 115, in get_reclamos
+    with get_connection(db) as conn:
+  File "C:\Users\Felipe\AppData\Local\Programs\Python\Python312\Lib\contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "C:\Users\Felipe\Documents\pulse-reports\utils\db.py", line 43, in get_connection
+    raise DatabaseError(
+utils.db.DatabaseError: No se pudo conectar a 'grupouno_prd' tras 3 intentos
+2026-06-22 16:53:19 [INFO    ] __main__ — Evaluando alertas…
+2026-06-22 16:53:19 [INFO    ] reports.alerts — Alerta generada: 🟡 [ADVERTENCIA] [Honduras] Sin entregas de premios hoy: No se registraron entregas en el día.
+2026-06-22 16:53:19 [INFO    ] reports.alerts — Alerta generada: 🟡 [ADVERTENCIA] [El Salvador] Sin entregas de premios hoy: No se registraron entregas en el día.
+2026-06-22 16:53:19 [INFO    ] __main__ — Alertas detectadas: 2
+2026-06-22 16:53:19 [INFO    ] __main__ — Generando gráficos…
+2026-06-22 16:53:19 [INFO    ] __main__ — Construyendo PDF → output\reporte_gp_20260622_1649_full.pdf
+2026-06-22 16:53:19 [INFO    ] reports.pdf_generator — PDF generado: output\reporte_gp_20260622_1649_full.pdf
+2026-06-22 16:53:41 [ERROR   ] notifications.senders — Telegram: error al enviar — HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot7703546533:AAEEc7PmhCxRf07TEM4S1lC6q4vUGzHmOC8/sendDocument (Caused by ConnectTimeoutError(<HTTPSConnection(host='api.telegram.org', port=443) at 0x1bfce9f86e0>, 'Connection to api.telegram.org timed out. (connect timeout=60)'))
+2026-06-22 16:53:41 [INFO    ] notifications.senders — Notificaciones enviadas: ninguna | Omitidas/fallidas: ['teams', 'slack', 'telegram', 'email']
+2026-06-22 16:53:41 [INFO    ] __main__ — Reporte completado. PDF: output\reporte_gp_20260622_1649_full.pdf

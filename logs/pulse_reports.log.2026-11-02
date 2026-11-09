@@ -1,0 +1,44 @@
+2026-11-02 08:55:18 [INFO    ] queries.ganadores — Ganadores: 1236 registros de detalle, 6 campañas con datos.
+2026-11-02 08:55:20 [WARNING ] __main__ — Validación informativa — totalPrizes vs registros (informativo): Registros de ganadores: 1236
+Premios contabilizados: 1235
+Diferencia (registros - premios): 1
+Registros con observaciones: 1
+
+ID: 2189; Cliente: 28278; Campaña: 825; País: El Salvador; totalPrizes: 0
+2026-11-02 08:57:00 [INFO    ] __main__ — Telegram: Excel enviado (message_id=107).
+2026-11-02 09:01:17 [INFO    ] queries.reporte_diario_premios — Reporte diario premios: 3 filas.
+2026-11-02 09:08:21 [INFO    ] __main__ — Reporte de cliente: ejecución=2026-11-02T09:08:21.430977-06:00; corte=2026-11-01 (inclusive); zona horaria=America/Guatemala.
+2026-11-02 09:10:41 [INFO    ] queries.ganadores — Ganadores: 1223 registros de detalle, 6 campañas con datos.
+2026-11-02 09:10:41 [INFO    ] __main__ — Inicio configurado por campaña (America/Guatemala): 818=19/10/2026 00:00:00, 819=19/10/2026 00:00:00, 820=19/10/2026 00:00:00, 825=19/10/2026 00:00:00, 826=19/10/2026 00:00:00, 828=19/10/2026 00:00:00, 829=19/10/2026 00:00:00.
+2026-11-02 09:10:42 [INFO    ] __main__ — Reporte hasta el corte: ganadores=1223; premios=1222.
+2026-11-02 09:10:42 [WARNING ] __main__ — Validación con observaciones — totalPrizes vs registros (informativo).
+2026-11-02 09:11:10 [INFO    ] __main__ — Reporte de cliente: ejecución=2026-11-02T09:11:10.637970-06:00; corte=2026-11-01 (inclusive); zona horaria=America/Guatemala.
+2026-11-02 09:13:26 [INFO    ] queries.ganadores — Ganadores: 1223 registros de detalle, 6 campañas con datos.
+2026-11-02 09:13:26 [INFO    ] __main__ — Inicio configurado por campaña (America/Guatemala): 818=19/10/2026 00:00:00, 819=19/10/2026 00:00:00, 820=19/10/2026 00:00:00, 825=19/10/2026 00:00:00, 826=19/10/2026 00:00:00, 828=19/10/2026 00:00:00, 829=19/10/2026 00:00:00.
+2026-11-02 09:13:27 [INFO    ] __main__ — Reporte hasta el corte: ganadores=1223; premios=1222.
+2026-11-02 09:13:27 [WARNING ] __main__ — Validación con observaciones — totalPrizes vs registros (informativo).
+2026-11-02 09:13:35 [INFO    ] export_ganadores — Telegram: Excel enviado (message_id=109).
+2026-11-02 09:53:45 [INFO    ] queries.reporte_diario_premios — Reporte diario premios: 3 filas.
+2026-11-02 13:56:52 [WARNING ] utils.db — Intento 1/3 fallido (grupouno_prd): connection to server at "localhost" (::1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-11-02 13:56:58 [WARNING ] utils.db — Intento 2/3 fallido (grupouno_prd): connection to server at "localhost" (::1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-11-02 13:57:06 [WARNING ] utils.db — Intento 3/3 fallido (grupouno_prd): connection to server at "localhost" (::1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-11-02 13:57:06 [ERROR   ] __main__ — No se pudo generar el reporte: No se pudo conectar a 'grupouno_prd' tras 3 intentos
+2026-11-02 13:57:35 [INFO    ] queries.reporte_diario_premios — Reporte diario premios: 3 filas.
+2026-11-02 17:02:11 [INFO    ] queries.reporte_diario_premios — Reporte diario premios: 3 filas.
+2026-11-02 17:13:26 [INFO    ] queries.reporte_diario_premios — Reporte diario premios: 3 filas.
+2026-11-02 17:13:26 [ERROR   ] __main__ — No se pudo generar el reporte: Archivo de premios quemados ilegible o corrupto (C:\Users\Felipe\Documents\pulse-reports\data\premios_quemados.json): Unexpected UTF-8 BOM (decode using utf-8-sig): line 1 column 1 (char 0)
+2026-11-02 17:15:23 [INFO    ] queries.reporte_diario_premios — Reporte diario premios: 3 filas.
+2026-11-02 17:15:23 [ERROR   ] __main__ — No se pudo generar el reporte: Archivo de premios quemados ilegible o corrupto (C:\Users\Felipe\Documents\pulse-reports\data\premios_quemados.json): Unexpected UTF-8 BOM (decode using utf-8-sig): line 1 column 1 (char 0)
+2026-11-02 17:17:11 [INFO    ] queries.reporte_diario_premios — Reporte diario premios: 3 filas.

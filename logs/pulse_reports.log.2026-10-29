@@ -1,0 +1,54 @@
+2026-10-29 08:34:03 [INFO    ] __main__ — Reporte de cliente: ejecución=2026-10-29T08:34:03.196065-06:00; corte=2026-10-28 (inclusive); zona horaria=America/Guatemala.
+2026-10-29 08:35:36 [INFO    ] queries.ganadores — Ganadores: 867 registros de detalle, 6 campañas con datos.
+2026-10-29 08:35:36 [INFO    ] __main__ — Inicio configurado por campaña (America/Guatemala): 818=19/10/2026 00:00:00, 819=19/10/2026 00:00:00, 820=19/10/2026 00:00:00, 825=19/10/2026 00:00:00, 826=19/10/2026 00:00:00, 828=19/10/2026 00:00:00, 829=19/10/2026 00:00:00.
+2026-10-29 08:35:37 [INFO    ] __main__ — Reporte hasta el corte: ganadores=867; premios=866.
+2026-10-29 08:35:37 [WARNING ] __main__ — Validación con observaciones — totalPrizes vs registros (informativo).
+2026-10-29 08:35:47 [INFO    ] export_ganadores — Telegram: Excel enviado (message_id=91).
+2026-10-29 08:59:13 [INFO    ] queries.reporte_diario_premios — Reporte diario premios: 3 filas.
+2026-10-29 09:43:02 [INFO    ] queries.ganadores — Ganadores: 879 registros de detalle, 6 campañas con datos.
+2026-10-29 09:43:04 [WARNING ] __main__ — Validación fallida — totalPrizes vs registros (informativo): Registros de ganadores: 879
+Premios contabilizados: 878
+Diferencia (registros - premios): 1
+Registros con observaciones: 1
+
+ID: 2189; Cliente: 28278; Campaña: 825; País: El Salvador; totalPrizes: 0
+2026-10-29 09:48:44 [INFO    ] queries.ganadores — Ganadores: 880 registros de detalle, 6 campañas con datos.
+2026-10-29 09:48:45 [WARNING ] __main__ — Validación informativa — totalPrizes vs registros (informativo): Registros de ganadores: 880
+Premios contabilizados: 879
+Diferencia (registros - premios): 1
+Registros con observaciones: 1
+
+ID: 2189; Cliente: 28278; Campaña: 825; País: El Salvador; totalPrizes: 0
+2026-10-29 09:48:51 [INFO    ] __main__ — Telegram: Excel enviado (message_id=94).
+2026-10-29 12:02:09 [INFO    ] queries.reporte_diario_premios — Reporte diario premios: 3 filas.
+2026-10-29 12:47:25 [INFO    ] queries.reporte_diario_premios — Reporte diario premios: 3 filas.
+2026-10-29 13:07:38 [INFO    ] queries.reporte_diario_premios — Reporte diario premios: 3 filas.
+2026-10-29 14:21:24 [WARNING ] utils.db — Intento 1/3 fallido (grupouno_prd): connection to server at "localhost" (::1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-10-29 14:21:30 [WARNING ] utils.db — Intento 2/3 fallido (grupouno_prd): connection to server at "localhost" (::1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-10-29 14:21:38 [WARNING ] utils.db — Intento 3/3 fallido (grupouno_prd): connection to server at "localhost" (::1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-10-29 14:21:38 [ERROR   ] __main__ — No se pudo generar el reporte: No se pudo conectar a 'grupouno_prd' tras 3 intentos
+2026-10-29 14:21:52 [INFO    ] queries.reporte_diario_premios — Reporte diario premios: 3 filas.
+2026-10-29 15:59:29 [INFO    ] queries.reporte_diario_premios — Reporte diario premios: 3 filas.
+2026-10-29 16:11:05 [INFO    ] queries.reporte_diario_premios — Reporte diario premios: 3 filas.
+2026-10-29 18:07:52 [WARNING ] utils.db — Intento 1/3 fallido (grupouno_prd): connection to server at "localhost" (::1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-10-29 18:07:58 [WARNING ] utils.db — Intento 2/3 fallido (grupouno_prd): connection to server at "localhost" (::1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5433 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+

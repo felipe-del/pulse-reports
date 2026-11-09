@@ -1,0 +1,33 @@
+2026-10-26 08:10:47 [INFO    ] __main__ — Reporte de cliente: ejecución=2026-10-26T08:10:47.505951-06:00; corte=2026-10-25 (inclusive); zona horaria=America/Guatemala.
+2026-10-26 08:10:49 [INFO    ] queries.ganadores — Ganadores: 548 registros de detalle, 6 campañas con datos.
+2026-10-26 08:10:49 [INFO    ] __main__ — Inicio configurado por campaña (America/Guatemala): 818=19/10/2026 00:00:00, 819=19/10/2026 00:00:00, 820=19/10/2026 00:00:00, 825=19/10/2026 00:00:00, 826=19/10/2026 00:00:00, 828=19/10/2026 00:00:00, 829=19/10/2026 00:00:00.
+2026-10-26 08:10:50 [INFO    ] __main__ — Reporte hasta el corte: ganadores=548; premios=547.
+2026-10-26 08:10:50 [WARNING ] __main__ — Validación con observaciones — totalPrizes vs registros (informativo).
+2026-10-26 08:11:01 [INFO    ] export_ganadores — Telegram: Excel enviado (message_id=66).
+2026-10-26 08:31:54 [INFO    ] __main__ — Reporte de cliente: ejecución=2026-10-26T08:31:54.940833-06:00; corte=2026-10-25 (inclusive); zona horaria=America/Guatemala.
+2026-10-26 08:32:50 [INFO    ] queries.ganadores — Ganadores: 548 registros de detalle, 6 campañas con datos.
+2026-10-26 08:32:50 [INFO    ] __main__ — Inicio configurado por campaña (America/Guatemala): 818=19/10/2026 00:00:00, 819=19/10/2026 00:00:00, 820=19/10/2026 00:00:00, 825=19/10/2026 00:00:00, 826=19/10/2026 00:00:00, 828=19/10/2026 00:00:00, 829=19/10/2026 00:00:00.
+2026-10-26 08:32:51 [INFO    ] __main__ — Reporte hasta el corte: ganadores=548; premios=547.
+2026-10-26 08:32:51 [WARNING ] __main__ — Validación con observaciones — totalPrizes vs registros (informativo).
+2026-10-26 08:33:02 [INFO    ] export_ganadores — Telegram: Excel enviado (message_id=67).
+2026-10-26 08:37:21 [INFO    ] __main__ — Reporte de cliente: ejecución=2026-10-26T08:37:21.317319-06:00; corte=2026-10-25 (inclusive); zona horaria=America/Guatemala.
+2026-10-26 08:38:15 [INFO    ] queries.ganadores — Ganadores: 548 registros de detalle, 6 campañas con datos.
+2026-10-26 08:38:15 [INFO    ] __main__ — Inicio configurado por campaña (America/Guatemala): 818=19/10/2026 00:00:00, 819=19/10/2026 00:00:00, 820=19/10/2026 00:00:00, 825=19/10/2026 00:00:00, 826=19/10/2026 00:00:00, 828=19/10/2026 00:00:00, 829=19/10/2026 00:00:00.
+2026-10-26 08:38:16 [INFO    ] __main__ — Reporte hasta el corte: ganadores=548; premios=547.
+2026-10-26 08:38:16 [WARNING ] __main__ — Validación con observaciones — totalPrizes vs registros (informativo).
+2026-10-26 08:38:23 [INFO    ] export_ganadores — Telegram: Excel enviado (message_id=68).
+2026-10-26 08:42:17 [INFO    ] __main__ — Reporte de cliente: ejecución=2026-10-26T08:42:17.186970-06:00; corte=2026-10-25 (inclusive); zona horaria=America/Guatemala.
+2026-10-26 08:43:18 [INFO    ] queries.ganadores — Ganadores: 548 registros de detalle, 6 campañas con datos.
+2026-10-26 08:43:18 [INFO    ] __main__ — Inicio configurado por campaña (America/Guatemala): 818=19/10/2026 00:00:00, 819=19/10/2026 00:00:00, 820=19/10/2026 00:00:00, 825=19/10/2026 00:00:00, 826=19/10/2026 00:00:00, 828=19/10/2026 00:00:00, 829=19/10/2026 00:00:00.
+2026-10-26 08:43:18 [INFO    ] __main__ — Reporte hasta el corte: ganadores=548; premios=547.
+2026-10-26 08:43:18 [WARNING ] __main__ — Validación con observaciones — totalPrizes vs registros (informativo).
+2026-10-26 08:43:25 [INFO    ] export_ganadores — Telegram: Excel enviado (message_id=69).
+2026-10-26 09:08:46 [INFO    ] queries.reporte_diario_premios — Reporte diario premios: 3 filas.
+2026-10-26 09:08:56 [ERROR   ] __main__ — Telegram: sendMessage: tiempo de espera agotado (el envío pudo completarse; verifica el grupo antes de reintentar)
+2026-10-26 09:10:37 [INFO    ] queries.reporte_diario_premios — Reporte diario premios: 3 filas.
+2026-10-26 10:54:18 [INFO    ] queries.reporte_diario_premios — Reporte diario premios: 3 filas.
+2026-10-26 11:26:47 [INFO    ] queries.reporte_diario_premios — Reporte diario premios: 3 filas.
+2026-10-26 12:15:22 [INFO    ] queries.reporte_diario_premios — Reporte diario premios: 3 filas.
+2026-10-26 14:03:27 [INFO    ] queries.reporte_diario_premios — Reporte diario premios: 3 filas.
+2026-10-26 14:27:43 [INFO    ] queries.reporte_diario_premios — Reporte diario premios: 3 filas.
+2026-10-26 16:42:48 [INFO    ] queries.reporte_diario_premios — Reporte diario premios: 3 filas.

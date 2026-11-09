@@ -1,0 +1,75 @@
+2026-06-29 16:14:22 [INFO    ] __main__ — ============================================================
+2026-06-29 16:14:22 [INFO    ] __main__ — Iniciando Pulse Reports — 2026-06-29 16:14:22
+2026-06-29 16:14:22 [INFO    ] __main__ — Secciones activas: ['config_gp', 'historico', 'premios_hoy', 'reclamos', 'trivias']
+2026-06-29 16:14:22 [INFO    ] __main__ — ============================================================
+2026-06-29 16:14:22 [INFO    ] __main__ — Ejecutando queries Honduras…
+2026-06-29 16:14:35 [WARNING ] queries.premios — get_reclamos [grupouno_prd]: tabla 'responsive_roulette_prize_claims' no existe en esta BD — sección de reclamos omitida.
+2026-06-29 16:14:35 [INFO    ] __main__ — Ejecutando queries El Salvador…
+2026-06-29 16:14:48 [WARNING ] queries.premios — get_reclamos [grupouno_prd]: tabla 'responsive_roulette_prize_claims' no existe en esta BD — sección de reclamos omitida.
+2026-06-29 16:14:48 [INFO    ] __main__ — Evaluando alertas…
+2026-06-29 16:14:48 [INFO    ] reports.alerts — Alerta generada: 🔵 [INFO] [Honduras] Premios sin entregas hoy: IDs: [280, 282, 283, 284]
+2026-06-29 16:14:48 [INFO    ] reports.alerts — Alerta generada: 🔵 [INFO] [El Salvador] Premios sin entregas hoy: IDs: [298, 300, 301, 304, 305]
+2026-06-29 16:14:48 [INFO    ] __main__ — Alertas detectadas: 2
+2026-06-29 16:14:48 [INFO    ] __main__ — Generando gráficos…
+2026-06-29 16:14:49 [INFO    ] __main__ — Construyendo PDF → output\reporte_gp_20260629_1614_full.pdf
+2026-06-29 16:14:50 [INFO    ] reports.pdf_generator — PDF generado: output\reporte_gp_20260629_1614_full.pdf
+2026-06-29 16:14:55 [INFO    ] notifications.senders — Telegram: notificación enviada.
+2026-06-29 16:14:55 [INFO    ] notifications.senders — Notificaciones enviadas: ['telegram'] | Omitidas/fallidas: ['teams', 'slack', 'email']
+2026-06-29 16:14:55 [INFO    ] __main__ — Reporte completado. PDF: output\reporte_gp_20260629_1614_full.pdf
+2026-06-29 16:41:22 [INFO    ] __main__ — ============================================================
+2026-06-29 16:41:22 [INFO    ] __main__ — Iniciando Pulse Reports — 2026-06-29 16:41:22
+2026-06-29 16:41:22 [INFO    ] __main__ — Secciones activas: ['config_gp', 'historico', 'premios_hoy', 'reclamos', 'trivias']
+2026-06-29 16:41:22 [INFO    ] __main__ — ============================================================
+2026-06-29 16:41:22 [INFO    ] __main__ — Ejecutando queries Honduras…
+2026-06-29 16:41:35 [WARNING ] queries.premios — get_reclamos [grupouno_prd]: tabla 'responsive_roulette_prize_claims' no existe en esta BD — sección de reclamos omitida.
+2026-06-29 16:41:35 [INFO    ] __main__ — Ejecutando queries El Salvador…
+2026-06-29 16:41:47 [WARNING ] queries.premios — get_reclamos [grupouno_prd]: tabla 'responsive_roulette_prize_claims' no existe en esta BD — sección de reclamos omitida.
+2026-06-29 16:41:47 [INFO    ] __main__ — Evaluando alertas…
+2026-06-29 16:41:47 [INFO    ] reports.alerts — Alerta generada: 🔵 [INFO] [Honduras] Premios sin entregas hoy: IDs: [280, 282, 283, 284]
+2026-06-29 16:41:47 [INFO    ] reports.alerts — Alerta generada: 🔵 [INFO] [El Salvador] Premios sin entregas hoy: IDs: [298, 300, 301, 305]
+2026-06-29 16:41:47 [INFO    ] __main__ — Alertas detectadas: 2
+2026-06-29 16:41:47 [INFO    ] __main__ — Generando gráficos…
+2026-06-29 16:41:49 [INFO    ] __main__ — Construyendo PDF → output\reporte_gp_20260629_1641_full.pdf
+2026-06-29 16:41:49 [INFO    ] reports.pdf_generator — PDF generado: output\reporte_gp_20260629_1641_full.pdf
+2026-06-29 16:41:50 [INFO    ] notifications.senders — Teams: notificación enviada.
+2026-06-29 16:41:54 [INFO    ] notifications.senders — Telegram: notificación enviada.
+2026-06-29 16:41:54 [INFO    ] notifications.senders — Notificaciones enviadas: ['teams', 'telegram'] | Omitidas/fallidas: ['slack', 'email']
+2026-06-29 16:41:54 [INFO    ] __main__ — Reporte completado. PDF: output\reporte_gp_20260629_1641_full.pdf
+2026-06-29 16:56:38 [INFO    ] __main__ — ============================================================
+2026-06-29 16:56:38 [INFO    ] __main__ — Iniciando Pulse Reports — 2026-06-29 16:56:38
+2026-06-29 16:56:38 [INFO    ] __main__ — Secciones activas: ['config_gp', 'historico', 'premios_hoy', 'reclamos', 'trivias']
+2026-06-29 16:56:38 [INFO    ] __main__ — ============================================================
+2026-06-29 16:56:38 [INFO    ] __main__ — Ejecutando queries Honduras…
+2026-06-29 16:56:50 [WARNING ] queries.premios — get_reclamos [grupouno_prd]: tabla 'responsive_roulette_prize_claims' no existe en esta BD — sección de reclamos omitida.
+2026-06-29 16:56:50 [INFO    ] __main__ — Ejecutando queries El Salvador…
+2026-06-29 16:57:01 [WARNING ] queries.premios — get_reclamos [grupouno_prd]: tabla 'responsive_roulette_prize_claims' no existe en esta BD — sección de reclamos omitida.
+2026-06-29 16:57:01 [INFO    ] __main__ — Evaluando alertas…
+2026-06-29 16:57:01 [INFO    ] reports.alerts — Alerta generada: 🔵 [INFO] [Honduras] Premios sin entregas hoy: IDs: [280, 282, 283, 284]
+2026-06-29 16:57:01 [INFO    ] reports.alerts — Alerta generada: 🔵 [INFO] [El Salvador] Premios sin entregas hoy: IDs: [298, 300, 301, 305]
+2026-06-29 16:57:01 [INFO    ] __main__ — Alertas detectadas: 2
+2026-06-29 16:57:01 [INFO    ] __main__ — Generando gráficos…
+2026-06-29 16:57:05 [INFO    ] __main__ — Construyendo PDF → output\reporte_gp_20260629_1656_full.pdf
+2026-06-29 16:57:06 [INFO    ] reports.pdf_generator — PDF generado: output\reporte_gp_20260629_1656_full.pdf
+2026-06-29 16:57:08 [INFO    ] notifications.senders — Teams: notificación enviada.
+2026-06-29 16:57:09 [ERROR   ] notifications.senders — Telegram: error al enviar — 400 Client Error: Bad Request for url: https://api.telegram.org/bot7703546533:AAEEc7PmhCxRf07TEM4S1lC6q4vUGzHmOC8/sendMessage
+2026-06-29 16:57:09 [INFO    ] notifications.senders — Notificaciones enviadas: ['teams'] | Omitidas/fallidas: ['slack', 'telegram', 'email']
+2026-06-29 16:57:09 [INFO    ] __main__ — Reporte completado. PDF: output\reporte_gp_20260629_1656_full.pdf
+2026-06-29 17:08:34 [INFO    ] __main__ — ============================================================
+2026-06-29 17:08:34 [INFO    ] __main__ — Iniciando Pulse Reports — 2026-06-29 17:08:34
+2026-06-29 17:08:34 [INFO    ] __main__ — Secciones activas: ['config_gp', 'historico', 'premios_hoy', 'reclamos', 'trivias']
+2026-06-29 17:08:34 [INFO    ] __main__ — ============================================================
+2026-06-29 17:08:34 [INFO    ] __main__ — Ejecutando queries Honduras…
+2026-06-29 17:08:47 [WARNING ] queries.premios — get_reclamos [grupouno_prd]: tabla 'responsive_roulette_prize_claims' no existe en esta BD — sección de reclamos omitida.
+2026-06-29 17:08:47 [INFO    ] __main__ — Ejecutando queries El Salvador…
+2026-06-29 17:08:59 [WARNING ] queries.premios — get_reclamos [grupouno_prd]: tabla 'responsive_roulette_prize_claims' no existe en esta BD — sección de reclamos omitida.
+2026-06-29 17:08:59 [INFO    ] __main__ — Evaluando alertas…
+2026-06-29 17:08:59 [INFO    ] reports.alerts — Alerta generada: 🔵 [INFO] [Honduras] Premios sin entregas hoy: IDs: [280, 282, 283, 284]
+2026-06-29 17:08:59 [INFO    ] reports.alerts — Alerta generada: 🔵 [INFO] [El Salvador] Premios sin entregas hoy: IDs: [298, 300, 301, 305]
+2026-06-29 17:08:59 [INFO    ] __main__ — Alertas detectadas: 2
+2026-06-29 17:08:59 [INFO    ] __main__ — Generando gráficos…
+2026-06-29 17:09:02 [INFO    ] __main__ — Construyendo PDF → output\reporte_gp_20260629_1708_full.pdf
+2026-06-29 17:09:04 [INFO    ] reports.pdf_generator — PDF generado: output\reporte_gp_20260629_1708_full.pdf
+2026-06-29 17:09:05 [INFO    ] notifications.senders — Teams: notificación enviada.
+2026-06-29 17:09:05 [ERROR   ] notifications.senders — Telegram: error al enviar — 400 Client Error: Bad Request for url: https://api.telegram.org/bot7703546533:AAEEc7PmhCxRf07TEM4S1lC6q4vUGzHmOC8/sendMessage
+2026-06-29 17:09:05 [INFO    ] notifications.senders — Notificaciones enviadas: ['teams'] | Omitidas/fallidas: ['slack', 'telegram', 'email']
+2026-06-29 17:09:05 [INFO    ] __main__ — Reporte completado. PDF: output\reporte_gp_20260629_1708_full.pdf
