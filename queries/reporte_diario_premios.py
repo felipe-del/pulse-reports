@@ -4,7 +4,8 @@ Consulta (solo SELECT) del reporte diario Gane Premios por país.
 """
 import json
 import logging
-from datetime import date, time
+from datetime import date, datetime, time
+from zoneinfo import ZoneInfo
 
 import pandas as pd
 
@@ -27,6 +28,8 @@ FROM campaigns
 WHERE id = ANY(%s)
 ORDER BY id;
 """
+
+_CUT_SQL = "SELECT NOW();"
 
 _CREATED_TYPE_SQL = """
 SELECT data_type
@@ -59,72 +62,18 @@ WITH campanias(campaign_id, pais) AS (
         (828, 'Honduras'),
         (829, 'Honduras')
 ),
-campaign_configs(campaign_id, payload) AS (
-    VALUES
-        {campaign_configs}
-),
 corte AS (
     SELECT
-        NOW() AS fecha_hora_corte,
-        (NOW() AT TIME ZONE 'America/Guatemala')::date
+        %(fecha_hora_corte)s::timestamptz AS fecha_hora_corte,
+        (%(fecha_hora_corte)s::timestamptz AT TIME ZONE 'America/Guatemala')::date
             AS fecha_hoy,
-        (NOW() AT TIME ZONE 'America/Guatemala')::time
+        (%(fecha_hora_corte)s::timestamptz AT TIME ZONE 'America/Guatemala')::time
             AS hora_corte
-),
-horarios AS (
-    SELECT
-        c.id AS campaign_id,
-        (slot ->> 'dateFrom')::date AS fecha_programada,
-        (slot ->> 'timeFrom')::time AS hora_habilitacion,
-        COALESCE(NULLIF(slot ->> 'qty', '')::int, 0)
-            AS cantidad_premios
-    FROM campaigns c
-    JOIN campanias ca
-        ON ca.campaign_id = c.id
-    JOIN campaign_configs cc
-        ON cc.campaign_id = c.id
-    CROSS JOIN LATERAL
-        jsonb_array_elements(
-            CASE WHEN jsonb_typeof(cc.payload) = 'array'
-                 THEN cc.payload ELSE '[]'::jsonb END
-        ) config
-    CROSS JOIN LATERAL
-        jsonb_array_elements(
-            CASE WHEN jsonb_typeof(config -> 'gpCoupons') = 'array'
-                 THEN config -> 'gpCoupons' ELSE '[]'::jsonb END
-        ) cupon
-    CROSS JOIN LATERAL
-        jsonb_array_elements(
-            CASE WHEN jsonb_typeof(cupon -> 'storeConfig' -> 'stores') = 'array'
-                 THEN cupon -> 'storeConfig' -> 'stores' ELSE '[]'::jsonb END
-        ) tienda
-    CROSS JOIN LATERAL
-        jsonb_array_elements(
-            CASE WHEN jsonb_typeof(tienda -> 'slots') = 'array'
-                 THEN tienda -> 'slots' ELSE '[]'::jsonb END
-        ) slot
-    WHERE cupon -> 'isWinner' = 'true'::jsonb
-),
-programacion AS (
-    SELECT
-        h.campaign_id,
-        SUM(h.cantidad_premios)
-            AS premios_a_entregar_hoy,
-        COALESCE(
-            SUM(h.cantidad_premios) FILTER (
-                WHERE h.hora_habilitacion <= ct.hora_corte
-            ),
-            0
-        ) AS premios_habilitados_corte
-    FROM horarios h
-    CROSS JOIN corte ct
-    WHERE h.fecha_programada = ct.fecha_hoy
-    GROUP BY h.campaign_id
 ),
 ganadores AS (
     SELECT
         cpw."campaignId" AS campaign_id,
-        COALESCE(SUM(cpw."totalPrizes"), 0) AS premios_entregados_hoy
+        COALESCE(SUM(cpw."totalPrizes"), 0) AS premios_adjudicados_hoy
     FROM "CustomerPrizeWins" cpw
     CROSS JOIN corte ct
     WHERE cpw."campaignId" IN (
@@ -139,7 +88,7 @@ ganadores AS (
 ganadores_acumulado AS (
     SELECT
         cpw."campaignId" AS campaign_id,
-        COALESCE(SUM(cpw."totalPrizes"), 0) AS total_entregados_acumulado
+        COALESCE(SUM(cpw."totalPrizes"), 0) AS total_adjudicados_acumulados
     FROM "CustomerPrizeWins" cpw
     CROSS JOIN corte ct
     WHERE cpw."campaignId" IN (
@@ -155,22 +104,14 @@ SELECT
     ct.fecha_hoy AS fecha,
     TO_CHAR(ct.hora_corte, 'HH12:MI AM') AS hora_corte,
 
-    SUM(COALESCE(pr.premios_a_entregar_hoy, 0))
-        AS premios_a_entregar_total,
+    SUM(COALESCE(g.premios_adjudicados_hoy, 0))
+        AS premios_adjudicados_hoy,
 
-    SUM(COALESCE(pr.premios_habilitados_corte, 0))
-        AS premios_a_entregar_corte,
-
-    SUM(COALESCE(g.premios_entregados_hoy, 0))
-        AS premios_entregados_hoy,
-
-    SUM(COALESCE(ga.total_entregados_acumulado, 0))
-        AS total_entregados_acumulados
+    SUM(COALESCE(ga.total_adjudicados_acumulados, 0))
+        AS premios_adjudicados_acumulados
 
 FROM campanias ca
 CROSS JOIN corte ct
-LEFT JOIN programacion pr
-    ON pr.campaign_id = ca.campaign_id
 LEFT JOIN ganadores g
     ON g.campaign_id = ca.campaign_id
 LEFT JOIN ganadores_acumulado ga
@@ -185,8 +126,7 @@ ORDER BY CASE ca.pais
 END;
 """
 
-NUMERIC_COLS = ("premios_a_entregar_total", "premios_a_entregar_corte", "premios_entregados_hoy",
-                "total_entregados_acumulados")
+NUMERIC_COLS = ("premios_adjudicados_hoy", "premios_adjudicados_acumulados")
 
 class CampaignConfigurationError(RuntimeError):
     """La configuración de premios no permite generar un reporte confiable."""
@@ -255,13 +195,38 @@ def _decode_campaign_payload(campaign_id: int, raw_payload) -> list:
                             campaign_id, slot_path,
                             "se esperaba un objeto JSON de horario."))
                     try:
-                        date.fromisoformat(slot["dateFrom"])
+                        date_from = slot["dateFrom"]
+                        if (
+                            not isinstance(date_from, str)
+                            or date.fromisoformat(date_from).isoformat() != date_from
+                        ):
+                            raise ValueError("fecha fuera del formato YYYY-MM-DD")
                     except (KeyError, TypeError, ValueError) as exc:
                         raise CampaignConfigurationError(_configuration_warning(
                             campaign_id, f"{slot_path}.dateFrom",
                             "fecha ausente o inválida; se esperaba YYYY-MM-DD.")) from exc
                     try:
-                        time.fromisoformat(slot["timeFrom"])
+                        date_to = slot["dateTo"]
+                        if (
+                            not isinstance(date_to, str)
+                            or date.fromisoformat(date_to).isoformat() != date_to
+                        ):
+                            raise ValueError("fecha fuera del formato YYYY-MM-DD")
+                    except (KeyError, TypeError, ValueError) as exc:
+                        raise CampaignConfigurationError(_configuration_warning(
+                            campaign_id, f"{slot_path}.dateTo",
+                            "fecha ausente o inválida; se esperaba YYYY-MM-DD.")) from exc
+                    if date.fromisoformat(date_from) > date.fromisoformat(date_to):
+                        raise CampaignConfigurationError(_configuration_warning(
+                            campaign_id, slot_path,
+                            "dateFrom no puede ser posterior a dateTo."))
+                    try:
+                        time_from = slot["timeFrom"]
+                        if not isinstance(time_from, str):
+                            raise ValueError("hora no textual")
+                        parsed_time = time.fromisoformat(time_from)
+                        if parsed_time.tzinfo is not None:
+                            raise ValueError("hora con zona horaria no admitida")
                     except (KeyError, TypeError, ValueError) as exc:
                         raise CampaignConfigurationError(_configuration_warning(
                             campaign_id, f"{slot_path}.timeFrom",
@@ -274,14 +239,90 @@ def _decode_campaign_payload(campaign_id: int, raw_payload) -> list:
     return payload
 
 
-def _campaign_config_values(configs: dict[int, list]) -> tuple[str, dict]:
-    values, params = [], {}
-    for index, (campaign_id, payload) in enumerate(sorted(configs.items())):
-        id_key, payload_key = f"campaign_id_{index}", f"payload_{index}"
-        values.append(f"(%({id_key})s::int, %({payload_key})s::jsonb)")
-        params[id_key] = campaign_id
-        params[payload_key] = json.dumps(payload)
-    return ",\n        ".join(values), params
+def _unique_campaign_configs(campaign_rows) -> dict[int, list | None]:
+    configs = {}
+    for campaign_id, raw_payload in campaign_rows:
+        campaign_id = int(campaign_id)
+        if campaign_id in configs and configs[campaign_id] is None:
+            continue
+        try:
+            payload = _decode_campaign_payload(campaign_id, raw_payload)
+        except CampaignConfigurationError:
+            configs[campaign_id] = None
+            continue
+        if campaign_id in configs:
+            if configs[campaign_id] != payload:
+                _configuration_warning(
+                    campaign_id, "push_data",
+                    "se recibieron configuraciones duplicadas y distintas; sus cantidades quedan no disponibles.")
+                configs[campaign_id] = None
+            continue
+        configs[campaign_id] = payload
+    return configs
+
+
+def _schedule_totals(configs: dict[int, list | None],
+                     fecha: date) -> dict[int, dict[str, int | None]]:
+    """Clasifica qty configurado por inicio y fin vigentes, sin inferir saldo."""
+    totals = {}
+    for campaign_id, payload in configs.items():
+        totals[campaign_id] = {
+            "programado_hoy_config_vigente": None if payload is None else 0,
+            "programados_nuevos_hoy": None if payload is None else 0,
+            "programados_arrastrados_hoy": None if payload is None else 0,
+            "arrastrados_por_fecha_inicio": None if payload is None else {},
+            "programados_vigentes_fin_posterior_hoy": None if payload is None else 0,
+            "programado_acumulado_config_vigente": None if payload is None else 0,
+        }
+    for campaign_id, payload in configs.items():
+        if payload is None:
+            continue
+        for config in payload:
+            for coupon in config["gpCoupons"]:
+                if coupon.get("isWinner") is not True:
+                    continue
+                stores = coupon["storeConfig"]["stores"]
+                for store in stores:
+                    for slot in store["slots"]:
+                        fecha_inicio = date.fromisoformat(slot["dateFrom"])
+                        fecha_programada = date.fromisoformat(slot["dateTo"])
+                        quantity = slot["qty"]
+                        if fecha_inicio <= fecha <= fecha_programada:
+                            if fecha_programada == fecha and fecha_inicio == fecha:
+                                totals[campaign_id]["programados_nuevos_hoy"] += quantity
+                                totals[campaign_id]["programado_hoy_config_vigente"] += quantity
+                            elif fecha_programada == fecha and fecha_inicio < fecha:
+                                totals[campaign_id]["programados_arrastrados_hoy"] += quantity
+                                totals[campaign_id]["programado_hoy_config_vigente"] += quantity
+                                by_start = totals[campaign_id]["arrastrados_por_fecha_inicio"]
+                                by_start[fecha_inicio] = by_start.get(fecha_inicio, 0) + quantity
+                            elif fecha_programada > fecha:
+                                totals[campaign_id][
+                                    "programados_vigentes_fin_posterior_hoy"
+                                ] += quantity
+                        if fecha_inicio <= fecha:
+                            totals[campaign_id]["programado_acumulado_config_vigente"] += quantity
+    return totals
+
+
+def _country_schedule_total(schedule: dict, campaign_ids: list[int], metric: str):
+    values = [schedule[cid][metric] for cid in campaign_ids]
+    return None if any(value is None for value in values) else sum(values)
+
+
+def _country_rollover_breakdown(schedule: dict, campaign_ids: list[int]):
+    if any(schedule[cid]["arrastrados_por_fecha_inicio"] is None for cid in campaign_ids):
+        return None
+    result = {}
+    for campaign_id in campaign_ids:
+        for start_date, quantity in schedule[campaign_id]["arrastrados_por_fecha_inicio"].items():
+            result[start_date] = result.get(start_date, 0) + quantity
+    return result
+
+
+def _validate_adjudication_totals(df: pd.DataFrame) -> None:
+    if (df["premios_adjudicados_acumulados"] < df["premios_adjudicados_hoy"]).any():
+        raise RuntimeError("Resultado inconsistente: adjudicados acumulados < adjudicados hoy.")
 
 
 def fetch_reporte_diario(db: DatabaseConfig) -> pd.DataFrame:
@@ -297,24 +338,29 @@ def fetch_reporte_diario(db: DatabaseConfig) -> pd.DataFrame:
             campaign_cursor.execute(_CAMPAIGNS_SQL, ([cid for cid, _ in CAMPANIAS],))
             campaign_rows = campaign_cursor.fetchall()
 
-        configs = {
-            int(campaign_id): _decode_campaign_payload(int(campaign_id), payload)
-            for campaign_id, payload in campaign_rows
-        }
-        missing_campaigns = sorted({cid for cid, _ in CAMPANIAS} - set(configs))
-        if missing_campaigns:
-            details = [
-                _configuration_warning(cid, "push_data", "no se encontró la campaña.")
-                for cid in missing_campaigns
-            ]
-            raise CampaignConfigurationError("; ".join(details))
+        with conn.cursor() as cut_cursor:
+            cut_cursor.execute(_CUT_SQL)
+            cut_row = cut_cursor.fetchone()
+        if (
+            not cut_row
+            or not isinstance(cut_row[0], datetime)
+            or cut_row[0].tzinfo is None
+        ):
+            raise RuntimeError("No se pudo obtener un corte único de fecha y hora.")
+        fecha_hora_corte = cut_row[0]
+        local_cut = fecha_hora_corte.astimezone(ZoneInfo(TZ))
 
-        config_values, config_params = _campaign_config_values(configs)
+        configs = _unique_campaign_configs(campaign_rows)
+        missing_campaigns = sorted({cid for cid, _ in CAMPANIAS} - set(configs))
+        for campaign_id in missing_campaigns:
+            _configuration_warning(campaign_id, "push_data", "no se encontró la campaña.")
+            configs[campaign_id] = None
+
         sql = REPORT_SQL.format(
             created_date=_CREATED_DATE[row[0]],
-            created_le_corte=_CREATED_LE_CORTE[row[0]],
-            campaign_configs=config_values)
-        df = pd.read_sql_query(sql, conn, params=config_params)
+            created_le_corte=_CREATED_LE_CORTE[row[0]])
+        df = pd.read_sql_query(
+            sql, conn, params={"fecha_hora_corte": fecha_hora_corte})
 
     if list(df["pais"]) != list(PAISES):
         raise RuntimeError(f"Resultado incompleto: países recibidos {list(df['pais'])}.")
@@ -325,9 +371,30 @@ def fetch_reporte_diario(db: DatabaseConfig) -> pd.DataFrame:
         if df[col].isna().any():
             raise RuntimeError(f"Resultado incompleto: valores nulos en {col}.")
         df[col] = df[col].astype(int)
-    if (df["premios_a_entregar_corte"] > df["premios_a_entregar_total"]).any():
-        raise RuntimeError("Resultado inconsistente: habilitados al corte > a entregar hoy.")
-    if (df["total_entregados_acumulados"] < df["premios_entregados_hoy"]).any():
-        raise RuntimeError("Resultado inconsistente: acumulado entregado < entregados hoy.")
+    _validate_adjudication_totals(df)
+
+    schedule = _schedule_totals(configs, local_cut.date())
+    for country in PAISES:
+        campaign_ids = [cid for cid, pais in CAMPANIAS if pais == country]
+        for metric in (
+            "programado_hoy_config_vigente",
+            "programados_nuevos_hoy",
+            "programados_arrastrados_hoy",
+            "programados_vigentes_fin_posterior_hoy",
+            "programado_acumulado_config_vigente",
+        ):
+            df.loc[df["pais"] == country, metric] = _country_schedule_total(
+                schedule, campaign_ids, metric)
+        df.loc[df["pais"] == country, "arrastrados_por_fecha_inicio"] = [
+            _country_rollover_breakdown(schedule, campaign_ids)
+        ]
+    logger.info(
+        "Programación por vigencia: para hoy clasifica isWinner qty con dateFrom=dateTo=hoy "
+        "como nueva, dateFrom<hoy=dateTo como arrastrada y dateFrom<=hoy<dateTo como vigente "
+        "con fin posterior; el acumulado suma qty una vez por slot con dateFrom<=hoy e incluye "
+        "todo el día sin filtrar timeFrom. Es configuración vigente, no historial ni saldo.")
+    logger.info(
+        "Pendientes/arrastres no calculados: no hay vínculo ni contador por estación/programación "
+        "entre push_data y CustomerPrizeWins.")
     logger.info("Reporte diario premios: %d filas.", len(df))
     return df

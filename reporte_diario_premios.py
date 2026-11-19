@@ -13,11 +13,8 @@ import argparse
 import logging
 import sys
 
-import pandas as pd
-
 from config.settings import config
 from notifications.senders import TelegramError, send_telegram_text
-from queries.premios_quemados import load_premios_quemados
 from queries.reporte_diario_premios import fetch_reporte_diario
 from reports.reporte_diario_mensaje import build_mensaje
 from utils.logger import setup_logging
@@ -49,9 +46,7 @@ def main(argv=None) -> int:
     args = _parse_args(argv)
     try:
         df = fetch_reporte_diario(config.db_hn)
-        fecha = pd.to_datetime(df.iloc[0]["fecha"]).date()
-        quemados, advertencias = load_premios_quemados(fecha)
-        texto = build_mensaje(df, quemados, advertencias)
+        texto = build_mensaje(df)
     except Exception as exc:
         logger.error("No se pudo generar el reporte: %s", exc)
         print(f"Error: no se pudo generar el reporte; no se envió nada. ({exc})", file=sys.stderr)

@@ -93,6 +93,72 @@ python main.py
 python scheduler.py
 ```
 
+### Reporte diario de premios (texto)
+
+```powershell
+.\.venv\Scripts\python.exe reporte_diario_premios.py
+```
+
+Muestra el resumen y solicita confirmación antes de enviarlo a Telegram. Las adjudicaciones
+se cuentan desde `CustomerPrizeWins`; no equivalen a entrega física. “Premios programados
+acumulados al cierre de hoy” suma `qty` de cada slot ganador una vez cuando `dateFrom` es
+hoy o anterior. Incluye la programación del día completo, sin filtrar por `timeFrom`, y no
+depende de `dateTo`. Es una suma de la configuración vigente, no un historial ni un saldo
+pendiente; el proyecto no acredita si `qty` es cantidad original o restante.
+“Programado para hoy” incluye únicamente slots con `dateTo` hoy: separa los nuevos
+(`dateFrom` hoy) de los arrastrados (`dateFrom` anterior), estos últimos agrupados por fecha
+original. Los slots cuya vigencia por fecha continúa después de hoy se muestran aparte y no
+se suman a “Programado para hoy”. Estas métricas suman `qty` configurado; no son pendientes.
+El reporte no usa `data/premios_quemados.json` para esas métricas.
+
+### Reporte de programación de premios por país
+
+```powershell
+.\.venv\Scripts\python.exe reporte_premios_atrasados.py
+.\.venv\Scripts\python.exe reporte_premios_atrasados.py --detalle
+```
+
+Muestra un dashboard breve en consola para Honduras, El Salvador y Guatemala; solo envía
+a Telegram después de responder `s`. Las campañas se muestran siempre en cada país.
+`--detalle` imprime localmente los slots, sus fuentes y los contadores en su nivel nativo.
+La consulta toma `campaigns.push_data` y la hora del mismo corte SQL, filtra `isWinner`,
+usa `rewards.title` vía `couponId` y valida `store.id` contra `stores`.
+
+El resumen de programación suma `slot.qty` una vez por registro válido, por fecha de
+inicio, y lo identifica como cantidad configurada. No se interpreta `qty` como saldo ni
+se presentan fechas previas como pendientes. `storeQty` se mantiene en su nivel
+cupón/tienda y `won` en su nivel agregado por cupón; la diferencia que aparece únicamente
+en `--detalle` se calcula una vez por cupón con la fórmula de `CONFIG_GP_SQL`:
+`stock_total = qty` si `isGlobal` es `true`, de lo contrario `stock_total = SUM(storeQty)`;
+`diferencia = stock_total - won`. No se atribuye a tienda, fecha o atraso.
+
+La fuente de la exportación de matriz con `entregados` y `disponibles` por registro no
+está en este repositorio. Hasta contar con esa fuente, entregados, disponibles,
+cumplimiento, movimientos diarios y atrasos permanecen “N/D”; el detalle de atrasos
+indica que falta saldo por PDV/programación. No se estiman con `slot.qty`, `storeQty` ni
+`won`. Si la fecha del corte es pasada, el reporte aclara que representa el estado actual
+de la configuración al corte, no una captura histórica.
+
+El reporte independiente con desglose por campaña se ejecuta con:
+
+```powershell
+.\.venv\Scripts\python.exe reporte_diario_premios_por_campania.py
+```
+
+Muestra totales por país y los mismos datos por campaña, en consola; no envía mensajes a
+Telegram. Las cantidades de programación suman `qty` de la configuración vigente y las
+adjudicaciones provienen de `CustomerPrizeWins`.
+
+Para comparar los acumulados por fecha final e inicial y adjudicaciones de las campañas 825
+y 826 al corte fijo `2026-11-12 10:26:00-06:00`, ejecutar el diagnóstico independiente:
+
+```powershell
+.\.venv\Scripts\python.exe diagnostico_acumulado_configuracion.py
+```
+
+El diagnóstico solo ejecuta SELECT, agrega la configuración vigente sin deduplicar filas y no
+contacta Telegram. La salida no reconstruye configuraciones históricas.
+
 ### Exportar ganadores a Excel (campañas Gane Premios GT / SV / HN)
 
 ```bash

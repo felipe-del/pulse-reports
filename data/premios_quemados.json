@@ -35,8 +35,18 @@
     "Honduras": 28
   },
   "2026-11-09": {
+    "Guatemala": 75,
+    "El Salvador": 73,
+    "Honduras": 67
+  },
+    "2026-11-10": {
     "Guatemala": 32,
     "El Salvador": 30,
+    "Honduras": 28
+  },
+  "2026-11-11": {
+    "Guatemala": 31,
+    "El Salvador": 27,
     "Honduras": 27
   }
 }
