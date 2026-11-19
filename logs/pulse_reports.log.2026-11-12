@@ -1,0 +1,40 @@
+2026-11-12 08:24:34 [INFO    ] __main__ — Reporte de cliente: ejecución=2026-11-12T08:24:34.525845-06:00; corte=2026-11-11 (inclusive); zona horaria=America/Guatemala.
+2026-11-12 08:29:11 [INFO    ] queries.ganadores — Ganadores: 2120 registros de detalle, 7 campañas con datos.
+2026-11-12 08:29:11 [INFO    ] __main__ — Inicio configurado por campaña (America/Guatemala): 818=19/10/2026 00:00:00, 819=19/10/2026 00:00:00, 820=19/10/2026 00:00:00, 825=19/10/2026 00:00:00, 826=19/10/2026 00:00:00, 828=19/10/2026 00:00:00, 829=19/10/2026 00:00:00.
+2026-11-12 08:29:14 [INFO    ] __main__ — Reporte hasta el corte: ganadores=2120; premios=2119.
+2026-11-12 08:29:14 [WARNING ] __main__ — Validación con observaciones — totalPrizes vs registros (informativo).
+2026-11-12 08:34:38 [INFO    ] export_ganadores — Telegram: Excel enviado (message_id=173).
+2026-11-12 08:57:38 [INFO    ] queries.ganadores — Ganadores: 2179 registros de detalle, 7 campañas con datos.
+2026-11-12 08:57:41 [WARNING ] __main__ — Validación informativa — totalPrizes vs registros (informativo): Registros de ganadores: 2179
+Premios contabilizados: 2178
+Diferencia (registros - premios): 1
+Registros con observaciones: 1
+
+ID: 2189; Cliente: 28278; Campaña: 825; País: El Salvador; totalPrizes: 0
+2026-11-12 08:57:48 [INFO    ] __main__ — Telegram: Excel enviado (message_id=174).
+2026-11-12 09:29:55 [INFO    ] queries.reporte_diario_premios — Reporte diario premios: 3 filas.
+2026-11-12 10:18:28 [INFO    ] queries.reporte_diario_premios — Reporte diario premios: 3 filas.
+2026-11-12 10:26:48 [INFO    ] queries.reporte_diario_premios — Programación acumulada vigente: suma qty de premios isWinner con dateTo anterior al corte y, para hoy, timeFrom <= hora de corte. Usa configuración actual; dateFrom/historial no se usan y adjudicaciones no se asignan a slots.
+2026-11-12 10:26:48 [INFO    ] queries.reporte_diario_premios — Pendientes/arrastres no calculados: no hay vínculo ni contador por estación/programación entre push_data y CustomerPrizeWins.
+2026-11-12 10:26:48 [INFO    ] queries.reporte_diario_premios — Reporte diario premios: 3 filas.
+2026-11-12 10:38:29 [INFO    ] queries.reporte_diario_premios — Programación por vigencia: para hoy clasifica isWinner qty con dateFrom=dateTo=hoy como nueva, dateFrom<hoy=dateTo como arrastrada y dateFrom<=hoy<dateTo como vigente con fin posterior; acumulado suma qty con dateFrom anterior a hoy o inicio hoy hasta timeFrom al corte. Es la configuración vigente, no historial ni saldo.
+2026-11-12 10:38:29 [INFO    ] queries.reporte_diario_premios — Pendientes/arrastres no calculados: no hay vínculo ni contador por estación/programación entre push_data y CustomerPrizeWins.
+2026-11-12 10:38:29 [INFO    ] queries.reporte_diario_premios — Reporte diario premios: 3 filas.
+2026-11-12 10:46:22 [INFO    ] queries.reporte_diario_premios — Programación por vigencia: para hoy clasifica isWinner qty con dateFrom=dateTo=hoy como nueva, dateFrom<hoy=dateTo como arrastrada y dateFrom<=hoy<dateTo como vigente con fin posterior; acumulado suma qty con dateFrom anterior a hoy o inicio hoy hasta timeFrom al corte. El proyecto no confirma si timeFrom es la hora inicial de habilitación o una ventana diaria; es configuración vigente, no historial ni saldo.
+2026-11-12 10:46:22 [INFO    ] queries.reporte_diario_premios — Pendientes/arrastres no calculados: no hay vínculo ni contador por estación/programación entre push_data y CustomerPrizeWins.
+2026-11-12 10:46:22 [INFO    ] queries.reporte_diario_premios — Reporte diario premios: 3 filas.
+2026-11-12 11:05:23 [INFO    ] queries.reporte_diario_premios — Programación por vigencia: para hoy clasifica isWinner qty con dateFrom=dateTo=hoy como nueva, dateFrom<hoy=dateTo como arrastrada y dateFrom<=hoy<dateTo como vigente con fin posterior; el acumulado suma qty una vez por slot con dateFrom<=hoy e incluye todo el día sin filtrar timeFrom. Es configuración vigente, no historial ni saldo.
+2026-11-12 11:05:23 [INFO    ] queries.reporte_diario_premios — Pendientes/arrastres no calculados: no hay vínculo ni contador por estación/programación entre push_data y CustomerPrizeWins.
+2026-11-12 11:05:23 [INFO    ] queries.reporte_diario_premios — Reporte diario premios: 3 filas.
+2026-11-12 11:07:42 [INFO    ] queries.reporte_diario_premios — Programación por vigencia: para hoy clasifica isWinner qty con dateFrom=dateTo=hoy como nueva, dateFrom<hoy=dateTo como arrastrada y dateFrom<=hoy<dateTo como vigente con fin posterior; el acumulado suma qty una vez por slot con dateFrom<=hoy e incluye todo el día sin filtrar timeFrom. Es configuración vigente, no historial ni saldo.
+2026-11-12 11:07:42 [INFO    ] queries.reporte_diario_premios — Pendientes/arrastres no calculados: no hay vínculo ni contador por estación/programación entre push_data y CustomerPrizeWins.
+2026-11-12 11:07:42 [INFO    ] queries.reporte_diario_premios — Reporte diario premios: 3 filas.
+2026-11-12 12:04:02 [INFO    ] queries.reporte_diario_premios — Programación por vigencia: para hoy clasifica isWinner qty con dateFrom=dateTo=hoy como nueva, dateFrom<hoy=dateTo como arrastrada y dateFrom<=hoy<dateTo como vigente con fin posterior; el acumulado suma qty una vez por slot con dateFrom<=hoy e incluye todo el día sin filtrar timeFrom. Es configuración vigente, no historial ni saldo.
+2026-11-12 12:04:02 [INFO    ] queries.reporte_diario_premios — Pendientes/arrastres no calculados: no hay vínculo ni contador por estación/programación entre push_data y CustomerPrizeWins.
+2026-11-12 12:04:02 [INFO    ] queries.reporte_diario_premios — Reporte diario premios: 3 filas.
+2026-11-12 16:40:35 [INFO    ] queries.reporte_diario_premios — Programación por vigencia: para hoy clasifica isWinner qty con dateFrom=dateTo=hoy como nueva, dateFrom<hoy=dateTo como arrastrada y dateFrom<=hoy<dateTo como vigente con fin posterior; el acumulado suma qty una vez por slot con dateFrom<=hoy e incluye todo el día sin filtrar timeFrom. Es configuración vigente, no historial ni saldo.
+2026-11-12 16:40:35 [INFO    ] queries.reporte_diario_premios — Pendientes/arrastres no calculados: no hay vínculo ni contador por estación/programación entre push_data y CustomerPrizeWins.
+2026-11-12 16:40:35 [INFO    ] queries.reporte_diario_premios — Reporte diario premios: 3 filas.
+2026-11-12 16:53:14 [INFO    ] queries.reporte_diario_premios — Programación por vigencia: para hoy clasifica isWinner qty con dateFrom=dateTo=hoy como nueva, dateFrom<hoy=dateTo como arrastrada y dateFrom<=hoy<dateTo como vigente con fin posterior; el acumulado suma qty una vez por slot con dateFrom<=hoy e incluye todo el día sin filtrar timeFrom. Es configuración vigente, no historial ni saldo.
+2026-11-12 16:53:14 [INFO    ] queries.reporte_diario_premios — Pendientes/arrastres no calculados: no hay vínculo ni contador por estación/programación entre push_data y CustomerPrizeWins.
+2026-11-12 16:53:14 [INFO    ] queries.reporte_diario_premios — Reporte diario premios: 3 filas.

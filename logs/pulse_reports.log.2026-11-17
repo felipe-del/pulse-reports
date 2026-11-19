@@ -1,0 +1,9 @@
+2026-11-17 10:12:10 [INFO    ] queries.reporte_diario_premios — Programación por vigencia: para hoy clasifica isWinner qty con dateFrom=dateTo=hoy como nueva, dateFrom<hoy=dateTo como arrastrada y dateFrom<=hoy<dateTo como vigente con fin posterior; el acumulado suma qty una vez por slot con dateFrom<=hoy e incluye todo el día sin filtrar timeFrom. Es configuración vigente, no historial ni saldo.
+2026-11-17 10:12:10 [INFO    ] queries.reporte_diario_premios — Pendientes/arrastres no calculados: no hay vínculo ni contador por estación/programación entre push_data y CustomerPrizeWins.
+2026-11-17 10:12:10 [INFO    ] queries.reporte_diario_premios — Reporte diario premios: 3 filas.
+2026-11-17 11:29:23 [INFO    ] __main__ — Reporte de cliente: ejecución=2026-11-17T11:29:23.040120-06:00; corte=2026-11-16 (inclusive); zona horaria=America/Guatemala.
+2026-11-17 11:35:08 [INFO    ] queries.ganadores — Ganadores: 2586 registros de detalle, 7 campañas con datos.
+2026-11-17 11:35:08 [INFO    ] __main__ — Inicio configurado por campaña (America/Guatemala): 818=19/10/2026 00:00:00, 819=19/10/2026 00:00:00, 820=19/10/2026 00:00:00, 825=19/10/2026 00:00:00, 826=19/10/2026 00:00:00, 828=19/10/2026 00:00:00, 829=19/10/2026 00:00:00.
+2026-11-17 11:35:16 [INFO    ] __main__ — Reporte hasta el corte: ganadores=2586; premios=2585.
+2026-11-17 11:35:16 [WARNING ] __main__ — Validación con observaciones — totalPrizes vs registros (informativo).
+2026-11-17 12:07:27 [INFO    ] export_ganadores — Telegram: Excel enviado (message_id=177).
