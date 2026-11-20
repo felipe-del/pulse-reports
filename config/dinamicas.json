@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "dinamica_activa": "motagua_olimpia_2026",
+  "dinamicas": {
+    "motagua_olimpia_2026": {
+      "nombre": "Motagua vs Olimpia",
+      "descripcion": "Dinamica de entradas para Motagua vs Olimpia",
+      "pais": "Honduras",
+      "zona_horaria": "America/Tegucigalpa",
+      "fecha_inicio": null,
+      "fecha_fin": null,
+      "variantes": [
+        {
+          "codigo": "SOL",
+          "nombre": "Sol",
+          "historia_id": 125,
+          "campania_raspadita_id": 906,
+          "reto_id": 66,
+          "cupon_id": 534,
+          "eventos_vista": null,
+          "eventos_cta": null
+        },
+        {
+          "codigo": "SOMBRA",
+          "nombre": "Sombra",
+          "historia_id": 126,
+          "campania_raspadita_id": 907,
+          "reto_id": 67,
+          "cupon_id": 535,
+          "eventos_vista": null,
+          "eventos_cta": null
+        }
+      ]
+    }
+  }
+}

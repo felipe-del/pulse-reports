@@ -190,6 +190,46 @@ El Excel incluye conciliación contra la BD; el comando devuelve código 1 si al
 validación falla. `output/*.xlsx` está en `.gitignore` por contener datos personales.
 El campo `status` se muestra como código, sin interpretarlo como entregado/canjeado.
 
+### Reportes TAPP de dinámicas promocionales
+
+La configuración está en `config/dinamicas.json`. Se pueden conservar varias
+dinámicas y escoger una como `dinamica_activa`; cada una puede contener cualquier
+número de variantes. Los códigos e IDs deben ser únicos entre variantes para evitar
+atribuir dos veces los mismos registros. Fechas nulas no agregan períodos supuestos.
+
+```powershell
+.\.venv\Scripts\python.exe export_dinamicas.py
+.\.venv\Scripts\python.exe export_dinamicas.py --dinamica motagua_olimpia_2026
+.\.venv\Scripts\python.exe export_dinamicas.py --preview
+.\.venv\Scripts\python.exe export_dinamicas.py --check
+.\.venv\Scripts\python.exe export_dinamicas.py --desde 2026-11-01 --hasta 2026-11-30
+.\.venv\Scripts\python.exe export_dinamicas.py --output output\mi_dinamica.xlsx
+```
+
+El comando usa `DB_HN_*` y la conexión PostgreSQL de solo lectura existente; no
+envía notificaciones. `--check` valida conexión, tablas, columnas, IDs cuando la
+tabla padre está disponible y lista los valores agregados de
+`story_actions.description` para su clasificación. La consulta de historias usa el
+conteo base definido sobre `story_actions`; llamadas a la acción permanecen `N/D`
+hasta configurar en la variante `eventos_cta` con descripciones verificadas. No se
+clasifican eventos automáticamente. Historias carece de una columna temporal
+validada en las fuentes conocidas, por lo que se presenta `N/D` si se solicita un
+período. Las raspaditas y cupones usan `createdAt`; los retos filtran aceptaciones
+por `createdAt` y no cuentan cumplimiento posterior a `--hasta`.
+
+Las raspaditas se clasifican solo por `is_scratch_push_winner` (1, 0 o NULL);
+participaciones repetidas se conservan como registros, separadas de usuarios
+únicos. El cumplimiento de retos se agrupa por reto y cliente antes de relacionarlo
+con aceptaciones para no multiplicar registros. Los estados de cupones se muestran
+según `customerrewards.state` (0, 1, 2, -1), sin inferir entrega física. La
+asociación individual entre ganadores de raspadita y cupones y el estado de apertura
+no se atribuyen sin una relación confirmada y aparecen como `N/D`.
+
+El Excel incluye `DASHBOARD`, detalles de participantes, ganadores, perdedores,
+retos, cupones y `VALIDACIONES`. Fuentes/columnas incompatibles se marcan `N/D`;
+el estado de información se marca incompleto y el comando devuelve código 1, aunque
+conserva el archivo diagnóstico. Los Excel quedan excluidos de Git.
+
 ---
 
 ## Contenido del PDF
